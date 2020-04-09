@@ -1,56 +1,69 @@
 const express = require("express");
+const { uuid } = require("uuidv4");
 
 const app = express();
 
 // Instruct express to understand JSON (middleware)
 app.use(express.json());
 
-/**
- * HTTP methods
- *
- * GET: Retrieve data from backend
- * POST: Create data in the backend
- * PUT: Update data in the backend
- * DELETE: Delete data from the backend
- */
-
-/**
- * Parameter types
- *
- * Query params: Filters and pagination
- * Route params: Identify resources when updating/deleting a resource
- * Request body: Content used when creating/updating a resource (JSON)
- */
+const projects = [];
 
 // Query params
 app.get("/projects", (req, res) => {
-  const { title, owner } = req.query;
+  const { title } = req.query;
 
-  console.log({ title, owner });
+  const results = title
+    ? projects.filter((project) => project.title.includes(title))
+    : projects;
 
-  return res.json(["Project 1", "Project 2", "Project 3"]);
+  return res.json(results);
 });
 
 // Body params
 app.post("/projects", (req, res) => {
   const { title, owner } = req.body;
 
-  console.log({ title, owner });
+  const project = { id: uuid(), title, owner };
 
-  return res.json(["Project 1", "Project 2", "Project 3"]);
+  projects.push(project);
+
+  return res.json(project);
 });
 
 // Route params
 app.put("/projects/:id", (req, res) => {
   const { id } = req.params;
+  const { title, owner } = req.body;
 
-  console.log({ id });
+  const projectIndex = projects.findIndex((project) => project.id === id);
 
-  return res.json(["Project 1", "Project 2", "Project 3"]);
+  if (projectIndex < 0) {
+    return res.status(400).json({ error: "Project not found." });
+  }
+
+  const project = {
+    id,
+    title,
+    owner,
+  };
+
+  projects[projectIndex] = project;
+
+  return res.json(project);
 });
 
 app.delete("/projects/:id", (req, res) => {
-  return res.json(["Project 2", "Project 3"]);
+  const { id } = req.params;
+
+  const projectIndex = projects.findIndex((project) => project.id === id);
+
+  if (projectIndex < 0) {
+    return res.status(400).json({ error: "Project not found." });
+  }
+
+  projects.splice(projectIndex, 1);
+
+  return res.status(204).send();
 });
 
 app.listen(3333, () => {
