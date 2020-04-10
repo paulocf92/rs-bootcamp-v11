@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "./components/Header";
 
 // <></> denotes a fragment, it's a container but it has no visual feedback
 function App() {
+  const [projects, setProjects] = useState([
+    "App development",
+    "Front-end web",
+  ]);
+
+  function handleAddProject() {
+    setProjects([...projects, `New project ${Date.now()}`]);
+  }
+
   return (
     <>
-      <Header title="Homepage">
-        <ul>
-          <li>First homepage</li>
-          <li>Second homepage</li>
-        </ul>
-      </Header>
-      <Header title="Projects">
-        <ul>
-          <li>Project 1</li>
-          <li>Project 2</li>
-          <li>Project 3</li>
-        </ul>
-      </Header>
+      <Header title="Projects" />
+      <ul>
+        {projects.map((project) => (
+          <li key={project}>{project}</li>
+        ))}
+      </ul>
+
+      <button type="button" onClick={handleAddProject}>
+        Add project
+      </button>
     </>
   );
 }
