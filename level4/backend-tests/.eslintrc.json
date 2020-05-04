@@ -33,6 +33,7 @@
       "error",
       { "prefixWithI": "always" }
     ],
+    "no-useless-constructor": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
