@@ -16,3 +16,4 @@ This repo holds all code created for RocketSeat's Bootcamp version 11. Through t
   - [Mobile GoBarber](level3/mobile-gobarber)
 - Level #4: Architecture/tests with Nodejs
   - [Backend architecture/tests](level4/backend-tests)
+  - [GoBarber backend continuation](level4/backend-gobarber-continuation)
