@@ -18,3 +18,5 @@ This repo holds all code created for RocketSeat's Bootcamp version 11. Through t
   - [Backend architecture/tests](level4/backend-tests)
   - [GoBarber backend continuation](level4/backend-gobarber-continuation)
   - [GoBarber backend finalization](level4/backend-gobarber-finalize)
+- Level #5: Reactjs & React Native: Finalization
+  - [GoBarber frontend finalization](level5/frontend-gobarber-finalize)
