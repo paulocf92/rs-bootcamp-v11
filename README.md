@@ -60,6 +60,6 @@ Esse repósitorio abrange todo o código produzido durante o bootcamp GoStack da
 
 ## 📝 Licença
 
-Este projeto esta sobe a licença MIT.
+Este projeto esta sob a licença MIT.
 
-Feito com ❤️ por [Paulo Filho](https://www.linkedin.com/in/paulo-cezar-bueno-barbosa-filho-339833191/)!
+Feito com ❤️ por [Paulo Filho](https://www.linkedin.com/in/paulocf92/)!
